@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "ethers": "^5.7.0",
     "solc": "0.8.7-fixed"
   },
   "scripts": {
+    "start": "node deploy.js",
     "compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o out/"
   },
   "license": "MIT"
