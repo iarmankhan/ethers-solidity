@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.8; // Solidity version
+pragma solidity ^0.8.7; // Solidity version
 
 // EVM, ehthereum virtual machine
 contract SimpleStorage {
@@ -23,14 +23,14 @@ contract SimpleStorage {
     }
 
     // view
-    function retrieve() public view returns(uint256) {
+    function retrieve() public view returns (uint256) {
         return favoriteNumber;
     }
 
     // pure
-     function add() public pure returns (uint256) {
-         return 1 + 1;
-     }
+    function add() public pure returns (uint256) {
+        return 1 + 1;
+    }
 
     // struct, arrays or mapping need memory or calldata keywords
     // calldata - temporary but immutable
@@ -38,7 +38,7 @@ contract SimpleStorage {
     // storage - permanant but mutable
     // function params can only specify either calldata or memory
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
-        People memory newPerson = People({favoriteNumber: _favoriteNumber, name: _name});
+        People memory newPerson = People({favoriteNumber : _favoriteNumber, name : _name});
         people.push(newPerson);
 
         nameToFavoriteNumber[_name] = _favoriteNumber;
@@ -48,14 +48,14 @@ contract SimpleStorage {
         return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
     }
 
-    function findPersonByName(string memory _name) public view returns(People memory) {
+    function findPersonByName(string memory _name) public view returns (People memory) {
         uint256 temp = 0;
 
         People memory currentPerson;
-        while(temp < people.length){
+        while (temp < people.length) {
             currentPerson = people[temp];
 
-            if(compareStrings(currentPerson.name, _name)){
+            if (compareStrings(currentPerson.name, _name)) {
                 return currentPerson;
             }
             temp++;
