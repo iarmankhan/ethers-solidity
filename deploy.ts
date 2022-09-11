@@ -1,11 +1,11 @@
-require("dotenv").config();
-const ethers = require("ethers");
-const fs = require("fs");
+import "dotenv/config";
+import { ethers } from "ethers";
+import * as fs from "fs-extra";
 
 async function main() {
-    const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
+    const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL!);
 
-    const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+    const wallet = new ethers.Wallet(process.env.PRIVATE_KEY!, provider);
     // const encryptedJson = fs.readFileSync("./.encryptedKey.json", "utf8");
     // let wallet = new ethers.Wallet.fromEncryptedJson(
     //     encryptedJson,
@@ -29,7 +29,7 @@ async function main() {
 
     const contract = await contractFactory.deploy();
     await contract.deployTransaction.wait(1);
-    console.log(`Contract address: ${contract.address}`)
+    console.log(`Contract address: ${contract.address}`);
 
     const currentFavoriteNumber = await contract.retrieve();
     console.log("Current favorite number:", currentFavoriteNumber.toString());

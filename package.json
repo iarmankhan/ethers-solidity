@@ -2,15 +2,19 @@
   "dependencies": {
     "dotenv": "^16.0.2",
     "ethers": "^5.7.0",
+    "fs-extra": "^10.1.0",
     "solc": "0.8.7-fixed"
   },
   "scripts": {
-    "start": "node deploy.js",
+    "start": "ts-node deploy.ts",
     "compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o out/"
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "prettier": "^2.7.1",
-    "prettier-plugin-solidity": "^1.0.0-beta.24"
+    "prettier-plugin-solidity": "^1.0.0-beta.24",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
   }
 }
